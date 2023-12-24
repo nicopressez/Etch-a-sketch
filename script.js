@@ -9,6 +9,13 @@ slider.oninput = () => {makeGrid(slider.value, slider.value);
     sliderOutput.textContent = `${slider.value} * ${slider.value}`;}
 
 const checkboxRandom = document.getElementById("randomCheck");
+const colorPicker = document.getElementById("colorPicker");
+
+const clearButton = document.getElementById("clear");
+clearButton.addEventListener('click', () =>makeGrid(slider.value, slider.value));
+
+const eraserButton = document.getElementById("eraserButton");
+
 
 function makeGrid(rows, columns)
 {
@@ -22,8 +29,6 @@ function makeGrid(rows, columns)
     }
     addGridMouseover();
 }
-
-// Add a button to trigger player input, deciding on new grid size
 
 const gridCells = document.getElementsByClassName("grid-item");
 
@@ -62,8 +67,14 @@ if (checkboxRandom.checked)
     let random3 = Math.round (Math.random() * max);
     return `rgb(${random1}, ${random2}, ${random3}`;
 }
+else if (eraserButton.checked)
+{
+    return "white";
+}
+
 else
 {
-    return 'black';
+    return `${colorPicker.value}`;
 }
 }
+
