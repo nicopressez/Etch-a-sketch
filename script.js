@@ -8,6 +8,7 @@ sliderOutput.textContent = `${slider.value} * ${slider.value}`;
 slider.oninput = () => {makeGrid(slider.value, slider.value);
     sliderOutput.textContent = `${slider.value} * ${slider.value}`;}
 
+const checkboxRandom = document.getElementById("randomCheck");
 
 function makeGrid(rows, columns)
 {
@@ -36,12 +37,7 @@ function changeBackground(color) {
 function addGridMouseover(){
 for (let i = 0; i < gridCells.length; i++) {
     gridCells[i].addEventListener('mouseover', function() {
-            max = 255;
-            let random1 = Math.round (Math.random() * max);
-            let random2 = Math.round (Math.random() * max);
-            let random3 = Math.round (Math.random() * max);
-        changeBackground.call(this, `rgb(${random1}, ${random2}, ${random3}`)
-        
+        changeBackground.call(this, colorChoice())        
         }); 
     };
 }
@@ -56,3 +52,18 @@ function removeAllChildNodes(parent)
 }
 
 
+function colorChoice()
+{
+if (checkboxRandom.checked)
+{
+    max = 255;
+    let random1 = Math.round (Math.random() * max);
+    let random2 = Math.round (Math.random() * max);
+    let random3 = Math.round (Math.random() * max);
+    return `rgb(${random1}, ${random2}, ${random3}`;
+}
+else
+{
+    return 'black';
+}
+}
