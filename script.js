@@ -4,9 +4,9 @@ const root = document.documentElement;
 // Change grid size depending on slider value
 const slider = document.getElementById("slider");
 const sliderOutput = document.getElementById("sliderValue");
-sliderOutput.textContent = `${slider.value}* ${slider.value}`;
+sliderOutput.textContent = `${slider.value} * ${slider.value}`;
 slider.oninput = () => {makeGrid(slider.value, slider.value);
-    sliderOutput.textContent = `${slider.value}* ${slider.value}`;}
+    sliderOutput.textContent = `${slider.value} * ${slider.value}`;}
 
 
 function makeGrid(rows, columns)
@@ -36,10 +36,16 @@ function changeBackground(color) {
 function addGridMouseover(){
 for (let i = 0; i < gridCells.length; i++) {
     gridCells[i].addEventListener('mouseover', function() {
-        changeBackground.call(this, 'red'); 
-    });
+            max = 255;
+            let random1 = Math.round (Math.random() * max);
+            let random2 = Math.round (Math.random() * max);
+            let random3 = Math.round (Math.random() * max);
+        changeBackground.call(this, `rgb(${random1}, ${random2}, ${random3}`)
+        
+        }); 
+    };
 }
-}
+
 
 function removeAllChildNodes(parent)
 {
@@ -48,4 +54,5 @@ function removeAllChildNodes(parent)
         parent.removeChild(parent.firstChild);
     }
 }
+
 
