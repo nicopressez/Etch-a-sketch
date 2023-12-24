@@ -1,6 +1,14 @@
 const container = document.getElementById("container");
 const root = document.documentElement;
 
+// Change grid size depending on slider value
+const slider = document.getElementById("slider");
+const sliderOutput = document.getElementById("sliderValue");
+sliderOutput.textContent = `${slider.value}* ${slider.value}`;
+slider.oninput = () => {makeGrid(slider.value, slider.value);
+    sliderOutput.textContent = `${slider.value}* ${slider.value}`;}
+
+
 function makeGrid(rows, columns)
 {
     removeAllChildNodes(container);
@@ -15,12 +23,6 @@ function makeGrid(rows, columns)
 }
 
 // Add a button to trigger player input, deciding on new grid size
-
-const gridSizeButton = document.getElementById('inputNumber');
-gridSizeButton.addEventListener('click', () => {
-    let playerChoice = prompt('Type a number to define the rows & columns of the grid');
-    makeGrid(+playerChoice,+playerChoice);
-})
 
 const gridCells = document.getElementsByClassName("grid-item");
 
@@ -46,3 +48,4 @@ function removeAllChildNodes(parent)
         parent.removeChild(parent.firstChild);
     }
 }
+
